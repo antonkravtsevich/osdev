@@ -11,7 +11,7 @@ OBJFILES = \
 
 HEADERS = \
 	include/stdlib.h \
-	include/tty.h 
+	include/tty.h \
 
 image:
 	@echo "Creating hdd.img..."
