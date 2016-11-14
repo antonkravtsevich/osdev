@@ -5,7 +5,13 @@ AS 		= i686-elf-as
 
 OBJFILES = \
 	boot.o \
-	kernel.o
+	stdlib.o\
+	tty.o \
+	kernel.o 
+
+HEADERS = \
+	include/stdlib.h \
+	include/tty.h 
 
 image:
 	@echo "Creating hdd.img..."
@@ -46,9 +52,11 @@ all: myos.bin
 rebuild: clean all
 .s.o:
 	$(AS) -o $@ $<
-.c.o:
+.c.o: $(HEADERS)
 	$(CC) -o $@ -c $< $(CFLAGS)
 myos.bin: $(OBJFILES)
 	$(CC) -T linker.ld -o $@ -ffreestanding -O2 -nostdlib $^ -lgcc
 clean:
 	rm -f $(OBJFILES) myos.bin hdd.img
+start:
+	qemu-system-i386 -hda hdd.img

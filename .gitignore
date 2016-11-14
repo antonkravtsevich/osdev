@@ -1,4 +1,5 @@
 *.o
 *.img
 *.bin
+*.c2
 /isodir/
