@@ -7,6 +7,7 @@ OBJFILES = \
 	boot.o \
 	stdlib.o\
 	tty.o \
+	interrupts.o \
 	kernel.o 
 
 HEADERS = \
